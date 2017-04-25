@@ -42,3 +42,17 @@ grogXD = nuevaResistencia 0
 klusener :: Nombre -> Bebida
 klusener nombre =
   bajarResistencia ((fromIntegral . length) nombre)
+
+rescatarse tiempo
+    | tiempo > 3 = aumentarResistencia 200
+    | otherwise = aumentarResistencia 100
+
+agregarBebida unaBebida cliente =
+    nuevasBebidas (unaBebida : bebidas cliente) cliente
+
+nuevasBebidas unasBebidas cliente =
+    cliente {
+      bebidas = unasBebidas
+    }
+
+tomar bebida = agregarBebida bebida . bebida
