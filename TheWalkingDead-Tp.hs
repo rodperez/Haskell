@@ -1,7 +1,12 @@
 import Text.Show.Functions
 import Data.List
 
-data Protagonista = Protagonista Nombre PuntoDeVida GenteQuerida deriving (Show, Eq)
+data Protagonista = Protagonista {
+                    nombre :: Nombre;
+                    puntosDeVida :: PuntoDeVida,
+                    amigos ::  GenteQuerida
+                    }
+                     deriving (Show, Eq)
 
 type Nombre = String
 type PuntoDeVida = Int
@@ -16,9 +21,6 @@ krilin = Protagonista "Krilin" 1 []
 victor = Protagonista "Victor" 1 []
 
 --2) Modelar Zombies.
-nombre (Protagonista unNombre _  _)= unNombre
-
-puntosDeVida (Protagonista _ unosPuntoDeVida _) = unosPuntoDeVida
 
 nuevosPuntosDeVida unPuntoDeVida (Protagonista unNombre unosPuntoDeVida unaGenteQuerida ) =
   Protagonista unNombre unPuntoDeVida unaGenteQuerida
@@ -86,7 +88,5 @@ atacarAmigos (Protagonista unNombre unosPuntoDeVida unaGenteQuerida) =
 --muerto unProtagonista =   estaMuerto unProtagonista && noSonAmigos unProtagonista lista
 
 estaMuerto (Protagonista unNombre unosPuntoDeVida unaGenteQuerida) = unosPuntoDeVida <= 0
-
-amigos (Protagonista unNombre unosPuntoDeVida unaGenteQuerida) =  unaGenteQuerida
 
 noSonAmigos unProtagonista lista = not(elem (head lista) (amigos unProtagonista)) && not(elem (last lista) (amigos unProtagonista))
