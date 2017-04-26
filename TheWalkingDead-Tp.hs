@@ -2,7 +2,7 @@ import Text.Show.Functions
 import Data.List
 
 data Protagonista = Protagonista {
-                    nombre :: Nombre;
+                    nombre :: Nombre,
                     puntosDeVida :: PuntoDeVida,
                     amigos ::  GenteQuerida
                     }
